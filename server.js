@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.static(__dirname + "/dist/"));
 
-const port = process.env.port || 8081;
+const port = process.env.PORT || 8081;
 app.get(/.*/, (req, res) => {
   res.sendFile(__dirname + "/dist/index.html");
 });
