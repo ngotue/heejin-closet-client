@@ -1,13 +1,13 @@
-import axios from "axios";
-
+// import axios from "axios";
+import {API_ENDPOINT} from "../http-constants"
 const url = "api/posts/";
-
+console.log("API_ENDPOINT",API_ENDPOINT)
 class PostService {
   //get posts
   static getPosts() {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get(url);
+        const res = await API_ENDPOINT.get(url);
         const data = res.data;
         resolve(
           data.map(post => ({
@@ -23,14 +23,14 @@ class PostService {
 
   //create post
   static insertPost(text) {
-    return axios.post(url, {
+    return API_ENDPOINT.post(url, {
       text: text
     });
   }
 
   //delete post
   static deletePost(id) {
-    return axios.delete(`${url}${id}`);
+    return API_ENDPOINT.delete(`${url}${id}`);
   }
 }
 
